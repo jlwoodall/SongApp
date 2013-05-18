@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @song.title %>
+</p>
+
+<p>
+  <b>Key:</b>
+  <%= @song.key %>
+</p>
+
+<p>
+  <b>Lyrics:</b>
+  <%= @song.lyrics %>
+</p>
+
+<p>
+  <b>Composer:</b>
+  <%= @song.composer %>
+</p>
+
+<p>
+  <b>Picture:</b>
+  <%= image_tag(@song.picture_url, :width => 200) if @song.picture.present? %>
+</p>
+
+<h3>Comments</h3>
+
+<% @song.comments.each do |comment| %>
+  <div>
+    <strong><%= comment.user_name %></strong>
+    <br />
+    <p><%= comment.body %><p>
+  </div>
+<% end %>
+<%= render 'comments/form' %>
+
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>
